@@ -6,13 +6,13 @@
 <title>Communication coaching for Flow</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
   :root {
     --bg: #F1F0F3; --card: #ffffff; --ink: #211F28; --muted: #8C8995; --line: #EDEBF1;
     --cream: #F5F2CF; --dark: #2B2A31; --purple: #6D28D9; --psoft: #EFE9FB;
-    --green: #2E7D4E; --gsoft: #E9F4ED; --amber: #8A6D00;
+    --green: #2E7D4E; --gsoft: #E9F4ED;
   }
   body { font-family: 'Mulish', -apple-system, BlinkMacSystemFont, sans-serif; background: #d9d6e2; color: var(--ink); padding: 22px 14px 60px; }
   .page { max-width: 560px; margin: 0 auto; text-align: center; }
@@ -22,73 +22,65 @@
   .phone { position: relative; width: 390px; max-width: 100%; margin: 0 auto; background: var(--bg); border-radius: 46px; overflow: hidden; box-shadow: 0 24px 70px rgba(40,30,80,.26); border: 11px solid #0d0d10; text-align: left; height: 780px; }
 
   .sb { display: flex; align-items: center; justify-content: space-between; padding: 12px 24px 2px; }
-  .sb .t { font-weight: 800; font-size: 15px; letter-spacing: .2px; }
+  .sb .t { font-weight: 800; font-size: 15px; }
   .sb .island { width: 118px; height: 30px; background: #000; border-radius: 16px; }
   .sb .sys { display: flex; align-items: center; gap: 6px; }
 
   .appbar { display: flex; align-items: center; justify-content: space-between; padding: 9px 20px 6px; }
-  .appbar .hb { width: 26px; }
-  .appbar .hb span { display: block; height: 2.2px; background: var(--ink); border-radius: 2px; margin: 5px 0; }
-  .appbar .hb span:first-child { width: 26px; } .appbar .hb span:nth-child(2){ width: 26px; } .appbar .hb span:last-child{ width: 26px; }
-  .wordmark { display: flex; align-items: center; gap: 7px; font-weight: 800; font-size: 20px; letter-spacing: -.2px; }
+  .hb { width: 26px; } .hb span { display: block; height: 2.2px; width: 26px; background: var(--ink); border-radius: 2px; margin: 5px 0; }
+  .wordmark { display: flex; align-items: center; gap: 7px; font-weight: 800; font-size: 20px; }
   .wave { display: flex; align-items: flex-end; gap: 2.5px; height: 17px; }
   .wave i { width: 3px; background: var(--ink); border-radius: 2px; }
   .sw { width: 46px; height: 28px; border-radius: 15px; position: relative; flex-shrink: 0; }
   .sw.on { background: #34c759; } .sw.off { background: #D5D3DC; }
   .sw::after { content: ""; position: absolute; top: 2.5px; width: 23px; height: 23px; background: #fff; border-radius: 50%; box-shadow: 0 1px 2px rgba(0,0,0,.2); }
   .sw.on::after { right: 2.5px; } .sw.off::after { left: 2.5px; }
-  .back { font-size: 24px; color: var(--ink); cursor: pointer; width: 26px; line-height: 1; }
-  .xclose { font-size: 21px; color: var(--ink); cursor: pointer; font-weight: 500; }
+  .back { font-size: 24px; cursor: pointer; width: 26px; line-height: 1; }
+  .xclose { font-size: 21px; cursor: pointer; font-weight: 500; }
 
   .screen { height: 100%; overflow-y: auto; padding-bottom: 150px; }
   .content { padding: 8px 16px 18px; }
   .kicker { font-size: 11.5px; font-weight: 800; letter-spacing: 1.3px; text-transform: uppercase; color: var(--muted); margin: 12px 3px 6px; }
-  h2.ph { font-family: 'Newsreader', Georgia, serif; font-size: 33px; font-weight: 500; line-height: 1.08; margin: 0 2px 4px; letter-spacing: -.2px; }
+  h2.ph { font-family: 'Newsreader', Georgia, serif; font-size: 33px; font-weight: 500; line-height: 1.08; margin: 0 2px 4px; }
   h2.ph em { font-style: italic; color: var(--purple); }
   .date { font-size: 13px; color: var(--muted); margin: 0 3px 14px; font-weight: 600; }
 
-  .card { background: var(--card); border-radius: 24px; padding: 18px 18px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(40,30,70,.05); }
-  .card.tap { cursor: pointer; }
+  .card { background: var(--card); border-radius: 24px; padding: 18px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(40,30,70,.05); }
   .pill { display: inline-block; font-size: 10.5px; font-weight: 800; letter-spacing: .7px; text-transform: uppercase; border-radius: 999px; padding: 5px 11px; margin-bottom: 11px; background: #F3F1F7; color: #6c6780; }
   .pill.green { background: var(--gsoft); color: var(--green); }
   .pill.purple { background: var(--psoft); color: var(--purple); }
   .csub { font-family: 'Newsreader', Georgia, serif; font-size: 20px; font-weight: 500; margin-bottom: 6px; }
-  .rows { margin-top: 2px; }
   .r { font-size: 14.5px; line-height: 1.4; color: #35323f; padding: 11px 0; border-top: 1px solid var(--line); }
-  .r:first-child { border-top: none; padding-top: 4px; }
-  .lead { font-size: 14px; line-height: 1.55; color: #57536a; margin-top: 12px; }
+  .r:first-of-type { border-top: none; padding-top: 4px; }
+  .r.dim { color: #77737f; }
 
-  .mo { margin-bottom: 4px; }
-  .mo + .mo { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
-  .moh { font-weight: 800; font-size: 15.5px; line-height: 1.32; color: var(--ink); margin-bottom: 9px; }
-  .bubble { border-radius: 16px; padding: 12px 14px; }
-  .bubble.green { background: #EEF6F0; } .bubble.lav { background: #F2EEFB; }
-  .bubble p { font-size: 14px; line-height: 1.5; color: #35323f; }
-  .bubble .ts { display: block; font-size: 11.5px; color: #a3a0b0; margin-top: 6px; font-weight: 600; }
-  .why { font-size: 13.5px; line-height: 1.55; color: #4c4860; margin-top: 11px; }
+  .pat + .pat { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .pt { font-weight: 800; font-size: 15.5px; line-height: 1.32; margin-bottom: 10px; }
+  .ex { border-radius: 14px; padding: 11px 13px; margin-bottom: 8px; }
+  .ex.g { background: #EEF6F0; } .ex.p { background: #F2EEFB; }
+  .ex p { font-size: 14px; line-height: 1.5; color: #35323f; }
+  .ex .ts { display: block; font-size: 11.5px; color: #9d9aab; margin-top: 6px; font-weight: 700; }
+  .why { font-size: 13.5px; line-height: 1.55; color: #4c4860; margin-top: 10px; }
   .why b { color: var(--ink); font-weight: 800; }
-  .try { background: #F6F3FE; border: 1px solid #E6DEFA; border-radius: 16px; padding: 12px 14px; margin-top: 11px; }
-  .try .tl { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; color: var(--purple); margin-bottom: 6px; }
-  .try p { font-size: 14px; line-height: 1.5; color: #2f2b3d; }
-
-  .mctitle { font-family: 'Newsreader', Georgia, serif; font-size: 22px; font-weight: 600; margin-bottom: 8px; line-height: 1.2; }
-  .card p.body { font-size: 14px; line-height: 1.55; color: #4c4860; }
-
-  .trow { display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); cursor: pointer; }
-  .trow:first-of-type { border-top: none; }
-  .trow .tt { font-size: 15px; font-weight: 800; line-height: 1.3; }
-  .trow .tb { font-size: 13px; color: #6a6678; line-height: 1.45; margin-top: 3px; }
-  .trow .tg { font-size: 11.5px; color: var(--muted); margin-top: 6px; font-weight: 600; }
-  .trow .chev { color: #c6c2d4; font-size: 22px; flex-shrink: 0; line-height: 1; margin-top: 4px; }
+  .try { background: #F8F6FE; border: 1px solid #E6DEFA; border-radius: 16px; padding: 12px 14px; margin-top: 11px; }
+  .try .tl { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; color: var(--purple); margin-bottom: 8px; }
+  .ti + .ti { margin-top: 11px; padding-top: 11px; border-top: 1px solid #E6DEFA; }
+  .ti .tlab { font-size: 12px; font-weight: 800; color: var(--ink); margin-bottom: 4px; }
+  .ti .tlab span { font-weight: 600; color: #7a7590; }
+  .ti p { font-size: 14px; line-height: 1.5; color: #2f2b3d; }
 
   .tr2 { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.5; color: #4c4860; padding: 10px 0; border-top: 1px solid var(--line); }
   .tr2:first-of-type { border-top: none; padding-top: 2px; }
-  .tr2 .ar { font-size: 17px; font-weight: 800; flex-shrink: 0; } .ar.d { color: var(--green); } .ar.u { color: var(--purple); }
+  .tr2 .ar { font-size: 17px; font-weight: 800; flex-shrink: 0; }
+  .ar.good { color: var(--green); } .ar.bad { color: var(--purple); }
   .tr2 b { color: var(--ink); font-weight: 800; }
 
-  .bars { display: flex; gap: 9px; align-items: flex-end; height: 72px; margin: 15px 2px 4px; }
-  .bars > div { flex: 1; text-align: center; font-size: 11px; color: var(--muted); font-weight: 600; }
-  .bars > div > span { display: block; background: linear-gradient(#8f7bf0,#6d28d9); border-radius: 6px 6px 0 0; margin-bottom: 6px; }
+  .wrow { padding: 12px 0; border-top: 1px solid var(--line); }
+  .wrow:first-of-type { border-top: none; padding-top: 4px; }
+  .wn { font-weight: 800; font-size: 14.5px; }
+  .ws { font-size: 13.5px; color: #35323f; margin-top: 3px; line-height: 1.45; }
+  .ws b { color: var(--purple); font-weight: 800; }
+  .ww { font-size: 12.5px; color: var(--muted); margin-top: 2px; line-height: 1.45; }
 
   .chip { display: flex; align-items: center; gap: 10px; background: #fff; border-radius: 16px; padding: 12px 14px; margin-bottom: 13px; box-shadow: 0 1px 3px rgba(40,30,70,.05); cursor: pointer; }
   .chip .av { width: 30px; height: 30px; border-radius: 50%; background: var(--psoft); display: flex; align-items: center; justify-content: center; font-size: 15px; }
@@ -96,25 +88,26 @@
   .chip .cg { margin-left: auto; font-size: 13px; font-weight: 800; color: var(--purple); }
 
   .cream { background: var(--cream); border-radius: 24px; padding: 20px 18px; margin-bottom: 12px; }
-  .cream .ch { font-family: 'Newsreader', Georgia, serif; font-size: 23px; font-weight: 500; margin-bottom: 5px; }
-  .cream p { font-size: 13.5px; line-height: 1.5; color: #5a5636; margin-bottom: 13px; }
+  .cream .pill { background: #fff; }
+  .cream .ch { font-family: 'Newsreader', Georgia, serif; font-size: 23px; font-weight: 500; margin-bottom: 6px; }
+  .cream p { font-size: 14px; line-height: 1.5; color: #5a5636; margin-bottom: 13px; }
+  .cream p.last { margin-bottom: 0; color: #3f3c27; }
   .btn { background: var(--dark); color: #fff; text-align: center; font-size: 15px; font-weight: 700; border-radius: 15px; padding: 15px; cursor: pointer; }
 
-  .opt { display: flex; align-items: center; gap: 13px; background: #fff; border: 1.5px solid #ECE9F3; border-radius: 18px; padding: 16px 16px; margin-bottom: 10px; font-size: 16px; cursor: pointer; box-shadow: 0 1px 3px rgba(40,30,70,.04); }
+  .opt { display: flex; align-items: center; gap: 13px; background: #fff; border: 1.5px solid #ECE9F3; border-radius: 18px; padding: 16px; margin-bottom: 10px; font-size: 16px; cursor: pointer; }
   .opt .radio { width: 21px; height: 21px; border-radius: 50%; border: 2px solid #cfc8e0; flex-shrink: 0; }
   .opt.sel { border-color: var(--purple); }
   .opt.sel .radio { border-color: var(--purple); background: var(--purple); box-shadow: inset 0 0 0 3.5px #fff; }
   .opt.sel .name { font-weight: 800; }
-  .ctr { text-align: center; }
-
+  .lead { font-size: 14px; line-height: 1.55; color: #57536a; }
   .footnote { font-size: 12.5px; color: var(--muted); line-height: 1.6; text-align: center; margin: 16px 8px 2px; }
 
   .tabbar { position: absolute; left: 12px; right: 12px; bottom: 14px; background: #fff; border-radius: 30px; box-shadow: 0 6px 22px rgba(40,30,80,.14); display: flex; padding: 9px 6px; z-index: 10; }
-  .tab { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 10.5px; color: #9A98A4; font-weight: 700; cursor: pointer; padding: 5px 0; border-radius: 18px; }
+  .tab { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 10.5px; color: #9A98A4; font-weight: 700; cursor: pointer; padding: 5px 0; }
   .tab svg { width: 23px; height: 23px; }
   .tab.active { color: var(--purple); }
-  .tab.active . picon { background: var(--psoft); }
   .picon { display: flex; align-items: center; justify-content: center; width: 50px; height: 30px; border-radius: 16px; }
+  .tab.active .picon { background: var(--psoft); }
 
   .hint { position: absolute; left: 16px; right: 16px; bottom: 96px; background: #211F28; color: #fff; border-radius: 17px; padding: 12px 15px; font-size: 13.5px; line-height: 1.5; z-index: 9; box-shadow: 0 8px 24px rgba(0,0,0,.28); font-weight: 500; }
   .hint b { color: #cbb6ff; font-weight: 800; }
@@ -124,7 +117,7 @@
 <div class="page">
   <div class="concept">Product concept, not affiliated with Wispr AI. Illustrative sample content.</div>
   <div class="pagetitle">Communication coaching for Flow</div>
-  <p class="sub">Restyled to match the Flow app. Pick a role, read the recap, tap a topic to drill in. Switch roles from the chip at the top.</p>
+  <p class="sub">A concept for a coaching feature inside Flow: a daily recap of how you communicate, tuned to your role.</p>
   <div class="phone" id="phone">
     <div class="screen" id="screen"></div>
     <div class="hint" id="hint"></div>
@@ -134,178 +127,178 @@
 <script>
 var view = 'setup';
 var role = 'manager';
-var topicIdx = 0;
 var recapScroll = 0;
+
+var everyday = [
+  { n: `Cutting filler words`, s: `About <b>1 every 40 words</b>`, w: `Mostly when answering questions on the spot` },
+  { n: `Speaking without hedging`, s: `Used "just," "maybe," or "sort of" about <b>30 times</b>`, w: `Most often when disagreeing` },
+  { n: `Letting others finish`, s: `Started talking before someone finished <b>6 times</b>`, w: `Mostly in bigger meetings, less in 1:1s` },
+  { n: `Keeping sentences short`, s: `About <b>1 in 5</b> sentences ran past 40 words`, w: `Mostly in spoken updates, rarely in writing` },
+  { n: `Asking open-ended questions`, s: `Asked <b>7</b> open-ended questions this week`, w: `Most often in 1:1s` }
+];
 
 var roles = {
   ic: {
-    label: 'Individual contributor',
+    label: `Individual contributor`,
     ava: '\u{1F469}‍\u{1F4BB}',
-    summary: ['11 dictation sessions, in Slack and Gmail', '2 meetings: the billing architecture review, and search planning', '1,120 words dictated, 38 minutes talking'],
-    topicsLine: 'The morning was the architecture review and the blocked dependency. The afternoon was search planning and the deadline.',
-    dayWorked: [
-      { h: 'You brought data to the design review, not just a worry', q: '"I actually ran this at 10x load, and the month-end join times out."', when: '11:24 AM, design review', why: 'A number is harder to wave off than a hunch, so the room had to engage with it.' },
-      { h: 'You sized the part you actually controlled', q: '"The core rewrite is about four days of work."', when: '2:03 PM, search planning', why: 'Being specific about the piece you could estimate kept the number credible.' }
+    topics: [`The billing platform re-architecture design review`, `The identity platform dependency for the SSO rollout`, `The LatAm subscriptions expansion moving to December`],
+    worked: [
+      { t: `You backed up your concerns with actual data.`,
+        ex: [
+          { q: `I'm worried this design could double-charge customers. In testing, about 3 in every 1,000 invoices came out duplicated. We average 200K invoices a month, so that's roughly 600 customers billed twice. We need to fix that before we commit to this design.`, w: `11:24 AM, billing re-architecture design review` },
+          { q: `I'm concerned the SSO rollout won't be ready for our Q1 renewals. For context, 12 of them have SSO in the contract, which is around $1.8M in ARR. If the identity work isn't done by end of January, some of those renewals are at risk.`, w: `3:10 PM, email to the team` }
+        ],
+        why: `Backing each concern with data made the stakes clear, so people skipped the debate and went straight to fixing it.` },
+      { t: `You sized the work and laid out the trade-offs.`,
+        ex: [
+          { q: `Localizing checkout for Brazil and Mexico is about three weeks of work, which pushes the LatAm launch to December. If we launch in Mexico first, we can still hit November and add Brazil in January.`, w: `1:40 PM, LatAm planning meeting` },
+          { q: `Fixing the duplicate invoices properly is about two weeks of work, which would push the billing cutover past the end of the quarter. If we add a check that blocks duplicates before they go out, we can keep the date and do the full fix in January.`, w: `4:15 PM, 1:1 with your manager` }
+        ],
+        why: `Each time you flagged a delay, you also brought a way to keep things moving, so the conversation went to picking a path instead of dwelling on the slip.` }
     ],
-    dayBetter: [
-      { h: 'At the design review, you handed the call to the principal', q: '"I’ll defer to you."', when: '11:26 AM, design review', why: 'Two of your points were still unanswered, but asking the senior person to confirm you were right let him close it his way.', fix: '"Wait, can we not lock this in yet? I still don’t feel good about month-end close, and I think that’s the one that’s going to hurt us."' },
-      { h: 'You committed to a date you doubted, then said so in a DM', q: 'In the 1:1: "the 15th should be fine." / To Ravi: "there’s zero chance, ranking isn’t ready."', when: '2:20 and 2:40 PM', why: 'Your manager is planning on a date you already knew was shaky, and the doubt went to someone who could do nothing with it.', fix: '"Honestly the 15th worries me. I can hit it if ranking’s ready by the 10th, but right now it’s not close."' }
+    better: [
+      { t: `When someone pushed back, you let your point go.`,
+        ex: [
+          { q: `Yeah, no, that's fair. It's probably an edge case, we can just keep an eye on it.`, w: `11:31 AM, design review, after pushback on the duplicates` },
+          { q: `Okay, sure. Let's try to get both countries in by November and see how it goes.`, w: `1:52 PM, LatAm planning meeting, after pushback on launching Mexico first` }
+        ],
+        why: `You'd already made a strong case, and agreeing that quickly made it sound like it wasn't that important after all, so the decision moved ahead without it.`,
+        tries: [
+          { l: `Design review`, a: `Put the issue in context, then offer a fix`, line: `I hear you that it's a small share of invoices. But 600 customers a month is still XX in revenue, so it's worth handling. Can we add a step to the design that catches duplicates before invoices go out? I can share a first version by Thursday.` },
+          { l: `LatAm planning meeting`, a: `Restate the trade-off, then offer a way to decide`, line: `I get wanting both in November. Localizing both countries is about three weeks of work, which is what pushes us to December. Could we look at Mexico in November and Brazil in January? I'll put both timelines side by side so we can decide together.` }
+        ] },
+      { t: `Your updates took a while to get to the point.`,
+        ex: [
+          { q: `So on SSO, I've been going through the identity team's docs, and I set up a test environment, and I started mapping out how login would work for the enterprise accounts, and I think the main thing is I'm blocked until they send over the API spec.`, w: `9:30 AM, standup` },
+          { q: `Hey! I've been going through the LatAm expansion material and a few things came up with localization, and I talked to a couple of people, and I think we might need to talk about the timeline, it's looking like it could slip to December.`, w: `2:40 PM, Slack to your manager` }
+        ],
+        why: `The most important part was said towards the end, where it was easiest to miss.`,
+        tries: [
+          { l: `Standup`, a: `Lead with the blocker, then the background`, line: `I'm blocked on SSO until the identity team sends over the API spec. In the meantime, I've set up a test environment and started mapping out the enterprise login flow.` },
+          { l: `Slack to your manager`, a: `Lead with the news, then explain`, line: `Heads up, the LatAm expansion could slip to December. A few things came up with localization that I want to walk you through. Do you have 15 minutes today?` }
+        ] }
     ],
-    mostTitle: 'Say the hard thing where it counts',
-    mostBody: 'Three times today your read was the stronger one, and each time it got softened, deferred, or sent to someone who could not act on it. The content was right. It just never landed in the room where it mattered.',
-    trend: [
-      { dir: 'd', t: 'Points you softened or gave away, down from 9 to 4.' },
-      { dir: 'u', t: 'Saying the doubt in the room, up from 1 of 3 times to 2 of 3.' }
+    compare: [
+      { good: true, k: `Backing up concerns with data`, v: `3 times this week, up from 1 last week` },
+      { good: false, k: `Letting a point go after pushback`, v: `4 times this week, up from 3 last week` }
     ],
-    trendLabel: 'Points you softened or gave away, per day',
+    themesTitle: `Individual contributor themes`,
     themes: [
-      { n: 'Standing by a position', s: 'came up in 2 topics' },
-      { n: 'Pushing a view upward', s: 'came up in 2 topics' },
-      { n: 'Getting your point heard', s: 'came up in 1 topic' },
-      { n: 'Clarity of the ask', s: 'came up in 1 topic' },
-      { n: 'Confidence', s: 'came up in 1 topic' }
+      { n: `Making your case with data`, s: `Backed up <b>3 of 5</b> concerns with data`, w: `Strongest in email and design reviews` },
+      { n: `Explaining trade-offs`, s: `Laid out options in <b>2 of 4</b> delays you flagged`, w: `Mostly in planning meetings` },
+      { n: `Standing by your view`, s: `Held your view in <b>2 of 6</b> disagreements`, w: `Strongest in writing, weakest in larger meetings` },
+      { n: `Getting to the point`, s: `Led with the main point in <b>3 of 9</b> updates`, w: `Updates in standup tended to bury it` },
+      { n: `Raising risks early`, s: `Flagged <b>2 risks</b> before they became blockers`, w: `Both in writing, none out loud` }
     ],
-    topics: [
-      {
-        title: 'The billing re-platform review',
-        blurb: 'You had the data on why the design breaks, then handed the call to the principal.',
-        tags: 'Standing by a position · Getting your point heard',
-        overall: 'The architecture review on the billing rebuild. Marcus, the principal, pushed for an event-sourced design. You had spent the week prototyping it and found it breaks at month-end close, and you had the numbers.',
-        worked: { theme: 'Getting your point heard', h: 'You brought data, not just a worry', q: '"I actually ran this at 10x load, and the month-end join times out. Here is the trace."', when: '11:24 AM, design review', why: 'A number is harder to wave off than a hunch, so the room had to engage with it.' },
-        better: { theme: 'Standing by a position', h: 'At the decision point, you handed the call to Marcus', q: '"I mean, you have seen way more of these than me, so if you are confident it holds, I will defer."', when: '11:26 AM, design review', why: 'Two of your points were still unanswered, but asking the senior person to confirm you were right let him close it his way.', fix: '"Wait, can we not lock this in yet? I still don’t feel good about month-end close, and I think that’s the one that’s going to hurt us. Can we work through that first?"' },
-        most: { title: 'Hold the open question', body: 'When your point has not been answered, keep it on the table instead of handing the decision to whoever outranks you. You do not need permission to be right about the thing you actually checked.' }
-      },
-      {
-        title: 'The platform dependency',
-        blurb: 'Three weeks blocked, three polite nudges, and it never moved.',
-        tags: 'Clarity of the ask · Pushing a view upward',
-        overall: 'Your launch has been blocked on the platform team for three weeks, waiting on one endpoint. You raised it in their channel three times, and each time you were gracious about it.',
-        worked: { theme: 'Clarity of the ask', h: 'You named the specific thing you needed', q: '"We need the reconciliation endpoint to finish billing."', when: 'Monday, 9:15 AM, Slack', why: 'There was no confusion about what you were asking for.' },
-        better: { theme: 'Pushing a view upward', h: 'Every nudge said this was optional', q: '"No rush, whenever you get a chance." ... "Totally get you’re slammed, just flagging again." ... "Sorry to be a pain, still on our radar when there’s bandwidth."', when: 'across three weeks, Slack', why: 'Nothing in any of them said it was urgent or what it was holding up, so it stayed a low-priority favor instead of a shared problem.', fix: '"Hey, want to flag this is actually blocking the billing launch now. Every week it slips, our date slips with it. Can you give me a real date, or should we get both leads to sort priority?"' },
-        most: { title: 'Name what it is costing', body: 'A request moves when the other side can see what it blocks. Drop the apology and say the cost and the date, and it stops being a favor.' }
-      },
-      {
-        title: 'The search deadline',
-        blurb: 'You said yes to the 15th in your 1:1 and the opposite in a DM twenty minutes later.',
-        tags: 'Standing by a position · Confidence',
-        overall: 'Planning for the search migration. Your manager asked if it lands by the 15th. You said yes in the 1:1, then told a teammate the opposite right after.',
-        worked: { theme: 'Confidence', h: 'You sized the part you controlled', q: '"The core rewrite is about four days of work."', when: '2:03 PM, planning', why: 'You were specific about the piece you could actually estimate.' },
-        better: { theme: 'Standing by a position', h: 'You committed in the 1:1 and doubted it in a DM', q: 'In the 1:1: "Yeah, the 15th should be fine." / To Ravi at 2:40 PM: "there’s zero chance, ranking isn’t ready and no one’s even talking about it."', when: '2:20 and 2:40 PM', why: 'Your manager is now planning on a date you already knew was shaky, and the one person who could act on the doubt never heard it.', fix: '"Honestly the 15th worries me. I can hit it if ranking’s ready by the 10th, but right now it’s not close and I don’t think anyone owns it. Didn’t want to just say yes and have it blow up."' },
-        most: { title: 'Say the doubt where it counts', body: 'If you disagree with a date, say it in the room where it can change, not in a DM afterward. Committing out loud and doubting in private is the one combination that helps no one.' }
-      }
-    ]
+    focus: { t: `Standing by your view`, tip: `Next time someone pushes back in a meeting, say what it would take to change your mind before you agree.` }
   },
   manager: {
-    label: 'People manager',
+    label: `People manager`,
     ava: '\u{1F468}‍\u{1F4BC}',
-    summary: ['9 dictation sessions, in Slack and Gmail', '3 meetings: the 1:1 with Dana, the reorg standup, and planning with product', '1,240 words dictated, 46 minutes talking'],
-    topicsLine: 'The morning was the 1:1 with Dana and the reorg standup. The afternoon was the scope planning with the product team.',
-    dayWorked: [
-      { h: 'You opened the 1:1 with something genuine she’d done well', q: '"The auth migration was clean, and you got it in early."', when: '10:02 AM, 1:1', why: 'Starting specific meant she was not braced for a fight.' },
-      { h: 'You gave the team the new structure clearly', q: '"Here is how the teams line up starting Monday, and who owns what."', when: '9:30 AM, standup', why: 'No ambiguity about the new shape, so no one was guessing about reporting lines.' }
+    topics: [`The on-call rotation changes for the infra team`, `Your 1:1 with Jordan about missed deadlines`, `Q1 hiring plan for the platform team`],
+    worked: [
+      { t: `You made sure everyone left the conversation with next steps and a clear sense of what they owned.`,
+        ex: [
+          { q: `Okay, so to wrap up: Nina owns the new rotation schedule and sends it out by Wednesday. Theo updates the runbooks by Friday. I'll sort out the escalation path with the SRE team by next Tuesday.`, w: `10:45 AM, on-call planning meeting` },
+          { q: `Before we drop off, let's confirm next steps. I'll write up the two backend role descriptions by Monday, and Nina will line up the interview panel.`, w: `3:40 PM, hiring plan meeting` }
+        ],
+        why: `Everyone left knowing exactly what they owned and by when, so nothing got dropped between meetings and there were clear next steps.` },
+      { t: `You explained the reasoning behind your decisions.`,
+        ex: [
+          { q: `We're moving to a one-week on-call rotation instead of two. Last month, three people on two-week shifts got paged after midnight more than twelve times, and that's not sustainable.`, w: `9:15 AM, team standup` },
+          { q: `I'm prioritizing two backend hires over a frontend hire this quarter. Most of our Q1 roadmap is API work, and we're already stretched on that side.`, w: `2:10 PM, email to the direct-reports group` }
+        ],
+        why: `Giving the reason upfront made the decisions easier to understand, and gave anyone who disagreed something specific to respond to.` }
     ],
-    dayBetter: [
-      { h: 'The feedback for Dana got buried in reassurance', q: '"...that intensity can come off a little sharp, but honestly it’s a strength overall."', when: '10:40 AM, 1:1', why: 'Wrapped in that much reassurance it read as nothing to act on, and she left thinking she had been praised.', fix: '"Can I give you some honest feedback? Your work is the strongest on the team, hands down. A couple of people have come to me, reviews with you can come off pretty harsh. I’m not asking you to drop the bar. It’s really just the delivery."' },
-      { h: 'You sold the reorg instead of leveling with the team', q: '"I’m genuinely excited about this, it’s a great chance to refocus and get sharper."', when: '9:32 AM, standup', why: 'The two who lost work knew it was not exciting for them, and the gap between your tone and their reality cost you more than the cut did.', fix: '"I’ll be real, this one’s a cut, and it took work two of you cared about. I pushed back and didn’t win. Here’s what I’m going to do about it."' }
+    better: [
+      { t: `You softened feedback until the point got lost.`,
+        ex: [
+          { q: `So, um, the last couple of deadlines slipped a bit, which honestly happens to everyone, and I know you've had a lot on your plate, so no big deal, just something to maybe keep in mind.`, w: `11:30 AM, 1:1 with Jordan` },
+          { q: `This is looking great, thank you! Just a small thing, and totally fine if not, but maybe the weekend coverage could possibly use another look at some point?`, w: `4:00 PM, email to Nina` }
+        ],
+        why: `With that much cushioning around it, the feedback could be taken as optional.`,
+        tries: [
+          { l: `1:1 with Jordan`, a: `Be honest about it, then figure it out together`, line: `I want to talk about the last couple of deadlines that slipped. I know you've had a lot on your plate, and I really want to understand what's been getting in the way and how I can help, so we can get the next one in on time.` },
+          { l: `Email to Nina`, a: `Thank her for the work, then be clear about the change`, line: `This is looking great, thank you for pulling it together. One thing to flag before it goes out Wednesday: the weekend coverage needs another look. Happy to go through it with you if that helps.` }
+        ] },
+      { t: `You answered your own questions before anyone else could.`,
+        ex: [
+          { q: `What do you think made the last couple of deadlines tough to hit? I'm guessing it was mostly the scope, right?`, w: `11:45 AM, 1:1 with Jordan` },
+          { q: `Any thoughts on whether we hire senior or mid-level? Honestly, I'd lean senior, we need people who can ramp fast, so maybe senior it is.`, w: `3:15 PM, hiring plan meeting` }
+        ],
+        why: `You asked for input, then gave the answer in the same breath, so people never got a real chance to weigh in.`,
+        tries: [
+          { l: `1:1 with Jordan`, a: `Ask, then let them answer`, line: `What do you think made the last couple of deadlines tough to hit? I'd really like to understand your perspective.` },
+          { l: `Hiring meeting`, a: `Share your lean, then open it up`, line: `I'd lean senior since we need people who can ramp fast, but I want to hear if anyone has thoughts on that approach before we decide.` }
+        ] }
     ],
-    mostTitle: 'Name the uncomfortable part',
-    mostBody: 'The feedback, the reorg, the scope, each had a hard truth you smoothed over. People trust the manager who says it plainly, not the one who makes it sound easier than it is.',
-    trend: [
-      { dir: 'd', t: 'Hard messages you smoothed over, down from 8 to 3.' },
-      { dir: 'u', t: 'Closing a decision with a clear owner, up from 1 of 3 meetings to 2 of 3.' }
+    compare: [
+      { good: true, k: `Ending meetings with clear next steps and owners`, v: `4 times this week, up from 2 last week` },
+      { good: false, k: `Answering your own questions`, v: `5 times this week, up from 3 last week` }
     ],
-    trendLabel: 'Hard messages you smoothed over, per day',
+    themesTitle: `People manager themes`,
     themes: [
-      { n: 'Clear feedback', s: 'came up in 2 topics' },
-      { n: 'Decisions landing', s: 'came up in 2 topics' },
-      { n: 'Candor under pressure', s: 'came up in 1 topic' },
-      { n: 'Drawing others out', s: 'came up in 1 topic' }
+      { n: `Making ownership clear`, s: `Ended <b>4 of 6</b> meetings with clear next steps and owners`, w: `Mostly in planning meetings` },
+      { n: `Explaining your decisions`, s: `Gave the reasoning behind <b>3 of 4</b> decisions you shared`, w: `Strongest in emails to the team` },
+      { n: `Giving honest, caring feedback`, s: `Was clear about the issue in <b>1 of 4</b> pieces of feedback`, w: `Softest in 1:1s` },
+      { n: `Making room for others`, s: `Let people answer in <b>3 of 8</b> questions you asked`, w: `Happened in both 1:1s and team meetings` },
+      { n: `Recognizing good work`, s: `Called out specific wins <b>5 times</b>`, w: `Mostly in email, rarely in team meetings` }
     ],
-    topics: [
-      {
-        title: 'The 1:1 with Dana',
-        blurb: 'The feedback you went in to give got buried in praise.',
-        tags: 'Clear feedback · Drawing others out',
-        overall: 'Your 1:1 with Dana. She is your strongest engineer and the reason two people have quietly asked to move teams. You went in planning to talk about how she lands in reviews.',
-        worked: { theme: 'Drawing others out', h: 'You opened with something real she had done well', q: '"The auth migration was clean, and you got it in early."', when: '10:02 AM, 1:1', why: 'Starting specific and genuine meant she was not braced for a fight.' },
-        better: { theme: 'Clear feedback', h: 'The actual concern got buried in reassurance', q: '"People respect your bar, and sometimes that intensity can come off a little sharp, but honestly it’s a strength overall."', when: '10:40 AM, 1:1', why: 'Wrapped in that much reassurance it read as nothing to act on, and she left the room thinking she had been praised.', fix: '"Can I give you some honest feedback? Your work is the strongest on the team, hands down. The one thing, and a couple of people have come to me about it, is that reviews with you can come off pretty harsh. I’m not asking you to drop the bar. It’s really just the delivery."' },
-        most: { title: 'Say the hard part once, clearly', body: 'If the message is buried in praise, it did not land. Give the real feedback in plain words, then stop, so it has room to register.' }
-      },
-      {
-        title: 'The reorg announcement',
-        blurb: 'You sold a cut as a fresh start, and the team saw straight through it.',
-        tags: 'Candor under pressure · Decisions landing',
-        overall: 'Leadership cut a project, and in the reshuffle two of your people lost scope they cared about. You told the team about it in standup.',
-        worked: { theme: 'Decisions landing', h: 'You gave them the new structure clearly', q: '"Here is how the teams line up starting Monday, and who owns what."', when: '9:30 AM, standup', why: 'No ambiguity about the new shape, so no one was guessing about reporting lines.' },
-        better: { theme: 'Candor under pressure', h: 'You sold it instead of leveling with them', q: '"I’m genuinely excited about this, it’s a great chance for us to refocus and get sharper."', when: '9:32 AM, standup', why: 'The two people who lost work knew it was not exciting for them, and the gap between your tone and their reality cost you more than the cut did. One of them started interviewing that week.', fix: '"I’ll be real, this one’s a cut, and it took work two of you cared about. I pushed back on it and didn’t win. Here’s what I’m going to do to get you onto something that matters."' },
-        most: { title: 'Name the hard part', body: 'People trust the manager who says the uncomfortable thing out loud. Spin does not reassure anyone, it tells them you either do not see the cost or will not name it, and both read worse than the cost itself.' }
-      },
-      {
-        title: 'The scope with product',
-        blurb: 'You agreed to the aggressive quarter in the room, then handed it to your team.',
-        tags: 'Decisions landing · Clear feedback',
-        overall: 'Joint planning with the product team. Alex pushed an aggressive quarter you thought was unrealistic. In the room you agreed to it, then carried it back to your team.',
-        worked: { theme: 'Clear feedback', h: 'You named the tradeoff clearly at first', q: '"At this scope, something has to give on quality or timeline."', when: '1:10 PM, planning', why: 'You put the real tension on the table before the decision.' },
-        better: { theme: 'Decisions landing', h: 'You caved in the room, then passed the problem down', q: 'In the meeting: "Yeah, we’ll find a way to make it work." / To your team at 2:15 PM: "So we’re committed to all of it, we’ll figure out what to cut later."', when: '1:40 and 2:15 PM', why: 'You kept the peace with Alex, who was across the table, and handed the real conflict to the people you are responsible for.', fix: '"I want to commit to something we can actually hit. At this scope, here’s what I’d have to pull people off of, so let’s pick together what matters most."' },
-        most: { title: 'Hold the line where it costs you', body: 'Agreeing in the room to avoid friction just moves the friction onto your team. Push back where the decision is actually made, not after.' }
-      }
-    ]
+    focus: { t: `Making room for others`, tip: `Next time you ask the team a question, wait for at least one answer before you share your own view.` }
   },
   founder: {
-    label: 'Founder',
+    label: `Founder`,
     ava: '\u{1F680}',
-    summary: ['7 dictation sessions, in Gmail and Notion', '3 meetings: the board meeting, the VP candidate call, and standup', '1,050 words dictated, 41 minutes talking'],
-    topicsLine: 'The morning was the board meeting. The afternoon was the VP call, and the raise question kept surfacing in standup.',
-    dayWorked: [
-      { h: 'You led the board update with the real headline', q: '"Enterprise pipeline doubled this quarter, that’s the headline."', when: '8:28 AM, board deck', why: 'You pointed the room at the signal that actually sets the direction.' },
-      { h: 'You were specific about why the role matters', q: '"This is the one hire that changes what we can build next year."', when: '4:05 PM, VP call', why: 'Specific conviction lands harder than a generic pitch.' }
+    topics: [`The all-hands on the new product direction`, `Your Series C planning meeting`, `The enterprise plan pricing change`],
+    worked: [
+      { t: `You led with the decision, then explained it.`,
+        ex: [
+          { q: `We're pausing work on the mobile app for the next quarter so we can focus on the integrations customers keep asking for. I'll walk you through why, and what it means for each team.`, w: `9:05 AM, all-hands` },
+          { q: `We're raising $50M, mostly to build out our sales team in Europe. Let me walk you through why now.`, w: `11:02 AM, Series C planning meeting` }
+        ],
+        why: `People heard the decision first, so they could actually listen to the reasoning instead of waiting to hear the answer.` },
+      { t: `You were straight about the numbers, including the ones that weren't good.`,
+        ex: [
+          { q: `Our burn is running about $400K a month higher than we planned. That's going to come up, so I want us to have a talking point ready to answer to that.`, w: `11:10 AM, Series C planning meeting` },
+          { q: `Lowlight summary: we hit 92% of our Q3 revenue target. The shortfall came from two large deals slipping into Q4, and both are now in contracting.`, w: `4:30 PM, investor update email` }
+        ],
+        why: `Sharing the weak numbers yourself, before anyone had to ask, made everything else you said easier to trust and showed you weren't hiding anything.` }
     ],
-    dayBetter: [
-      { h: 'You softened the board number for four minutes before saying it', q: '"NRR looks soft, but context first..." Board member: "Is it 94 or not?"', when: '8:50 AM, board meeting', why: 'The long wind-up before the number told them you were scared of it, which made them scared of it.', fix: '"So on NRR, we came in at 94 this quarter, down from 101. Not where we want to be. Let me take you through what drove it."' },
-      { h: 'You kept selling the role and missed the real hesitation', q: '"I know comp might be a question, and title, and whether we have real PMF." (she got quieter)', when: '4:15 PM, VP call', why: 'You answered three objections she never raised and missed the one that mattered, that her partner’s job is in Austin.', fix: '"Can I just ask, what’s actually giving you pause? What would have to be true for this to be an easy yes?"' }
+    better: [
+      { t: `You kept talking after you'd already answered.`,
+        ex: [
+          { q: `Because our Europe pipeline doubled this year and we need the team there now. And honestly the market's good right now, and there's some competitor stuff going on, and we'd probably want to hire faster anyway, which is a whole separate conversation.`, w: `11:25 AM, Series C planning meeting, when asked why raise now` },
+          { q: `The new price reflects what you're getting. And look, if it's a problem, we can probably work something out, maybe a discount for the first year, or we could look at a smaller plan.`, w: `2:30 PM, customer call, when asked why the price is going up` }
+        ],
+        why: `Your first answer was strong. Everything you added after it made it sound less certain, and on the customer call it opened the door to a discount before anyone asked for it.`,
+        tries: [
+          { l: `Planning meeting`, a: `Give the answer, then stop`, line: `Because our Europe pipeline doubled this year and we need the team there now. Happy to go into the other reasons if that's useful.` },
+          { l: `Customer call`, a: `Give the reasons, then stop`, line: `We've added XX since you signed on, and the new price reflects that. Our own costs have also gone up, mostly XX. Happy to walk through any of it with you.` }
+        ] },
+      { t: `You used insider language with people who might not know it.`,
+        ex: [
+          { q: `So basically we're a vertical AI workflow layer on top of the system of record, and we're post-PMF in two of our ICPs.`, w: `10:30 AM, call with a VP of Engineering candidate` },
+          { q: `We're seeing really strong pull in mid-market, our NRR is best-in-class, and the flywheel's really starting to spin.`, w: `5:15 PM, podcast interview` }
+        ],
+        why: `Terms like ICP and NRR are second nature to you, but the people you were talking to aren't inside your company, so the point got harder to follow.`,
+        tries: [
+          { l: `Candidate call`, a: `Describe it the way they would`, line: `We build software that takes a lot of the manual work off XX teams. We've found two kinds of customers who really love it, and we're doubling down on them.` },
+          { l: `Podcast`, a: `Explain it like you would to a friend`, line: `More mid-sized companies are finding us on their own, and once customers start using us, they tend to use us more over time.` }
+        ] }
     ],
-    mostTitle: 'Lead with the hard thing',
-    mostBody: 'The board number, the hire, the cofounder split, each needed you to go straight at the uncomfortable thing instead of winding up to it or around it. The wind-up cost more than the thing itself would have.',
-    trend: [
-      { dir: 'd', t: 'Hard things you wound up to, down from 7 to 3.' },
-      { dir: 'u', t: 'Asking before selling, up from 1 of 3 times to 2 of 3.' }
+    compare: [
+      { good: true, k: `Leading with the decision`, v: `4 times this week, up from 2 last week` },
+      { good: false, k: `Insider language with outside audiences`, v: `3 times this week, up from 1 last week` }
     ],
-    trendLabel: 'Hard things you wound up to, per day',
+    themesTitle: `Founder themes`,
     themes: [
-      { n: 'Candor under pressure', s: 'came up in 2 topics' },
-      { n: 'Setting direction', s: 'came up in 2 topics' },
-      { n: 'Carrying conviction', s: 'came up in 1 topic' },
-      { n: 'Reading the room', s: 'came up in 1 topic' }
+      { n: `Leading with the decision`, s: `Opened with the decision in <b>4 of 5</b> big announcements`, w: `Strongest in the all-hands and planning meetings` },
+      { n: `Being upfront about setbacks`, s: `Raised <b>2 of 3</b> tough numbers before anyone asked`, w: `Mostly in investor and planning conversations` },
+      { n: `Answering with confidence`, s: `Let your first answer stand in <b>2 of 6</b> tough questions`, w: `Strongest in prepared conversations, weaker when put on the spot` },
+      { n: `Speaking plainly`, s: `Used plain language in <b>2 of 5</b> conversations outside the company`, w: `Insider terms came up most on external calls` },
+      { n: `Setting a clear direction`, s: `Shared where the company is headed <b>3 times</b>`, w: `Most clearly in the all-hands` }
     ],
-    topics: [
-      {
-        title: 'The board update',
-        blurb: 'You spent four minutes softening a number before you said it.',
-        tags: 'Candor under pressure · Context before the ask',
-        overall: 'The board meeting. Net revenue retention dipped to 94 from 101, and you got ahead of it before anyone asked.',
-        worked: { theme: 'Setting direction', h: 'You led the update with the thing that mattered', q: '"Enterprise pipeline doubled this quarter, that’s the headline."', when: '8:28 AM, board deck', why: 'You pointed the room at the signal that actually sets the direction.' },
-        better: { theme: 'Candor under pressure', h: 'You softened the number for four minutes before saying it', q: '"NRR looks soft, but context first, a few large accounts had odd timing, plus seasonality, and the cohort underneath is healthy, so I don’t think it’s a real signal." Board member: "Is it 94 or not?"', when: '8:50 AM, board meeting', why: 'The long wind-up before the number told them you were scared of it, which made them scared of it, and you spent the rest of the meeting on the back foot.', fix: '"So on NRR, we came in at 94 this quarter, down from 101. Not where we want to be. Let me take you through what drove it."' },
-        most: { title: 'Say the number, then explain', body: 'People read the length of your preamble as the size of the problem. Put the hard number out first, and you earn the room to give the context.' }
-      },
-      {
-        title: 'The VP hire',
-        blurb: 'You kept selling and never found what was actually holding her back.',
-        tags: 'Reading the room · Carrying conviction',
-        overall: 'Your call with Priya, the VP candidate you have chased for a month. She is your top pick and she is wavering.',
-        worked: { theme: 'Carrying conviction', h: 'You were specific about why the role matters', q: '"This is the one hire that changes what we can build next year, and that’s why it’s you."', when: '4:05 PM, call', why: 'Specific conviction lands harder than a generic pitch.' },
-        better: { theme: 'Reading the room', h: 'You kept selling and missed the real hesitation', q: '"I know comp might be a question, and title, and whether we have real PMF." (she got quieter)', when: '4:15 PM, call', why: 'You answered three objections she never raised and missed the one that mattered, that her partner’s job is in Austin and the role reads as in-person.', fix: '"Can I just ask, what’s actually giving you pause? What would have to be true for this to be an easy yes?"' },
-        most: { title: 'Ask before you sell', body: 'When you keep selling, you bury the one objection that decides it. The question that gets you there is simpler than the pitch: what is really holding you back?' }
-      },
-      {
-        title: 'The thing with your cofounder',
-        blurb: 'The raise-versus-runway split keeps leaking into every other call.',
-        tags: 'Candor under pressure · Setting direction',
-        overall: 'You and Sam disagree on raising now versus cutting burn to extend runway, and the two of you have not had the direct conversation. For two weeks it has leaked into everything else.',
-        worked: { theme: 'Setting direction', h: 'One on one, you stated your own view clearly', q: '"My read is we raise now, while the enterprise numbers are strong."', when: '11:00 AM, 1:1 with your lead', why: 'Asked directly, you gave a clear position someone could work with.' },
-        better: { theme: 'Candor under pressure', h: 'The real disagreement keeps surfacing sideways', q: 'In standup, on a hiring question: you, "I don’t think we should be adding headcount right now." Sam, "well, that depends on the raise, which we haven’t decided." (room goes quiet)', when: 'Tuesday standup, 10:05 AM', why: 'The team feels the split in a dozen small calls but no one has named it, so they start hedging because they cannot read the direction.', fix: '(to Sam, after) "We keep bumping into the raise-versus-runway thing in front of everyone. Can we just block an hour today, you and me, and actually decide it? Every call’s turning into a proxy for it."' },
-        most: { title: 'Have the one conversation you are avoiding', body: 'The talk you keep dodging is the one contaminating every other one. Take it off the floor, settle it directly, and the smaller decisions stop proxying for it.' }
-      }
-    ]
+    focus: { t: `Answering with confidence`, tip: `When a question catches you off guard, give one clear answer, then ask "Does that answer it?" instead of adding more.` }
   }
 };
 
@@ -321,124 +314,98 @@ function statusbar() {
   return '<div class="sb"><span class="t">3:03</span><span class="island"></span><span class="sys">'
   + '<svg width="19" height="13" viewBox="0 0 19 13"><rect x="0" y="9" width="3" height="4" rx="1" fill="#211F28"/><rect x="5" y="6" width="3" height="7" rx="1" fill="#211F28"/><rect x="10" y="3" width="3" height="10" rx="1" fill="#211F28"/><rect x="15" y="1" width="3" height="12" rx="1" fill="#c4c2cc"/></svg>'
   + '<svg width="18" height="13" viewBox="0 0 18 13" fill="none" stroke="#211F28" stroke-width="1.6" stroke-linecap="round"><path d="M1.5 4.3C5.6 1 12.4 1 16.5 4.3"/><path d="M4 7C6.9 4.7 11.1 4.7 14 7"/><path d="M6.6 9.7C8 8.6 10 8.6 11.4 9.7"/><circle cx="9" cy="11.6" r=".6" fill="#211F28" stroke="none"/></svg>'
-  + '<svg width="26" height="13" viewBox="0 0 26 13"><rect x="1" y="1" width="21" height="11" rx="3.2" fill="none" stroke="#211F28" stroke-opacity=".4" stroke-width="1"/><rect x="3" y="3" width="9" height="7" rx="1.6" fill="#E3B100"/><rect x="23.5" y="4.5" width="2" height="4" rx="1" fill="#211F28" fill-opacity=".4"/></svg>'
+  + '<svg width="26" height="13" viewBox="0 0 26 13"><rect x="1" y="1" width="21" height="11" rx="3.2" fill="none" stroke="#211F28" stroke-opacity=".4"/><rect x="3" y="3" width="9" height="7" rx="1.6" fill="#E3B100"/><rect x="23.5" y="4.5" width="2" height="4" rx="1" fill="#211F28" fill-opacity=".4"/></svg>'
   + '</span></div>';
 }
-function appbarMain(toggleOn) {
-  return '<div class="appbar"><div class="hb"><span></span><span></span><span></span></div>'
-  + '<div class="wordmark"><span class="wave"><i style="height:7px"></i><i style="height:14px"></i><i style="height:10px"></i><i style="height:16px"></i></span>Flow</div>'
-  + '<span class="sw ' + (toggleOn ? 'on' : 'off') + '"></span></div>';
-}
-function appbarSub() {
-  return '<div class="appbar"><span class="back" data-go="recap">&#8249;</span>'
-  + '<div class="wordmark"><span class="wave"><i style="height:7px"></i><i style="height:14px"></i><i style="height:10px"></i><i style="height:16px"></i></span>Flow</div>'
-  + '<span class="xclose" data-go="recap">&times;</span></div>';
-}
+var WORDMARK = '<div class="wordmark"><span class="wave"><i style="height:7px"></i><i style="height:14px"></i><i style="height:10px"></i><i style="height:16px"></i></span>Flow</div>';
+function appbarMain(on) { return '<div class="appbar"><div class="hb"><span></span><span></span><span></span></div>' + WORDMARK + '<span class="sw ' + (on ? 'on' : 'off') + '"></span></div>'; }
+function appbarSub() { return '<div class="appbar"><span class="back" data-go="recap">&#8249;</span>' + WORDMARK + '<span class="xclose" data-go="recap">&times;</span></div>'; }
 function tabsHtml() {
-  var items = [['Home', 'home'], ['Dictionary', 'brain'], ['Snippets', 'scissors'], ['Style', 'type'], ['Scratchpad', 'note']];
-  return items.map(function(it) {
-    var active = (it[0] === 'Home') ? ' active' : '';
-    return '<div class="tab' + active + '" data-tab="1"><span class="picon">' + ICON[it[1]] + '</span>' + it[0] + '</div>';
+  return [['Home', 'home'], ['Dictionary', 'brain'], ['Snippets', 'scissors'], ['Style', 'type'], ['Scratchpad', 'note']].map(function(it) {
+    return '<div class="tab' + (it[0] === 'Home' ? ' active' : '') + '" data-tab="1"><span class="picon">' + ICON[it[1]] + '</span>' + it[0] + '</div>';
   }).join('');
 }
-function hintHtml(text) { document.getElementById('hint').innerHTML = text; }
-function chip(r) {
-  return '<div class="chip" data-go="setup"><span class="av">' + r.ava + '</span><span class="cl">Coaching for <b>' + r.label + '</b></span><span class="cg">Change</span></div>';
-}
+function chip(r) { return '<div class="chip" data-go="setup"><span class="av">' + r.ava + '</span><span class="cl">Coaching for <b>' + r.label + '</b></span><span class="cg">Change</span></div>'; }
+function q(s) { return '“' + s + '”'; }
 
 function setupBody() {
   var opt = function(key) {
-    var sel = (role === key) ? ' sel' : '';
-    return '<div class="opt' + sel + '" data-selrole="' + key + '"><span class="radio"></span><span class="name">' + roles[key].label + '</span></div>';
+    return '<div class="opt' + (role === key ? ' sel' : '') + '" data-selrole="' + key + '"><span class="radio"></span><span class="name">' + roles[key].label + '</span></div>';
   };
-  return '<div class="content ctr" style="padding-top:22px"><div class="kicker" style="text-align:center">Set up coaching</div>'
+  return '<div class="content" style="padding-top:22px"><div class="kicker" style="text-align:center">Set up coaching</div>'
   + '<h2 class="ph" style="text-align:center">What’s your <em>role?</em></h2>'
-  + '<p class="lead" style="text-align:center;margin:10px 10px 20px;color:#57536a">Coaching tunes what it looks for to your role. You can change it any time from the recap.</p>'
-  + '<div style="text-align:left">' + opt('ic') + opt('manager') + opt('founder') + '</div>'
-  + '<p class="footnote" style="margin:4px 6px 16px">Not sure? Pick the closest. Your role only sets the starting point, the coaching still works from what you actually say.</p>'
+  + '<p class="lead" style="text-align:center;margin:10px 10px 20px">Flow coaches you based on your role.</p>'
+  + opt('ic') + opt('manager') + opt('founder')
+  + '<p class="footnote" style="margin:4px 6px 16px">Not sure? Pick the closest. Your role sets the starting point, the coaching works from what you actually say.</p>'
   + '<div class="btn" data-go="recap">See my recap</div></div>';
 }
 
-function momentHtml(m, kind) {
-  var bub = (kind === 'w') ? 'green' : 'lav';
-  var whylab = (kind === 'w') ? 'Why it worked' : 'Why it could be better';
-  var html = '<div class="mo"><div class="moh">' + m.h + '</div><div class="bubble ' + bub + '"><p>' + m.q + '</p><span class="ts">' + m.when + '</span></div><p class="why"><b>' + whylab + '.</b> ' + m.why + '</p>';
-  if (kind === 'b') html += '<div class="try"><span class="tl">Try something like</span><p>' + m.fix + '</p></div>';
+function patternHtml(p, kind) {
+  var exCls = kind === 'w' ? 'g' : 'p';
+  var html = '<div class="pat"><div class="pt">' + p.t + '</div>';
+  html += p.ex.map(function(e) { return '<div class="ex ' + exCls + '"><p>' + q(e.q) + '</p><span class="ts">' + e.w + '</span></div>'; }).join('');
+  html += '<p class="why"><b>' + (kind === 'w' ? 'Why it worked:' : 'Why it could be better:') + '</b> ' + p.why + '</p>';
+  if (kind === 'b') {
+    html += '<div class="try"><span class="tl">Try something like</span>'
+      + p.tries.map(function(t) { return '<div class="ti"><div class="tlab">' + t.l + ' <span>(' + t.a + ')</span></div><p>' + q(t.line) + '</p></div>'; }).join('')
+      + '</div>';
+  }
   return html + '</div>';
 }
 
 function recapBody() {
   var r = roles[role];
-  var topicsHtml = r.topics.map(function(t, i) {
-    return '<div class="trow" data-topic="' + i + '"><div><div class="tt">' + t.title + '</div><div class="tb">' + t.blurb + '</div><div class="tg">' + t.tags + '</div></div><span class="chev">&rsaquo;</span></div>';
-  }).join('');
-  var trendHtml = r.trend.map(function(tr) {
-    return '<div class="tr2"><span class="ar ' + tr.dir + '">' + (tr.dir === 'd' ? '&#8595;' : '&#8593;') + '</span><span>' + tr.t + '</span></div>';
-  }).join('');
   return '<div class="content">'
-  + '<div class="kicker">Evening recap</div><h2 class="ph">How you communicated <em>today</em></h2><div class="date">Saturday, Nov 7</div>'
+  + '<div class="kicker">Daily recap</div><h2 class="ph">How you communicated <em>today</em></h2><div class="date">Friday, Nov 6</div>'
   + chip(r)
-  + '<div class="card"><span class="pill">Summary</span><div class="csub">What this covers</div><div class="rows">' + r.summary.map(function(s) { return '<div class="r">' + s + '</div>'; }).join('') + '</div></div>'
-  + '<div class="card"><span class="pill">Overall read</span><div class="csub">Today’s topics</div><div class="rows">' + r.topics.map(function(t) { return '<div class="r">' + t.title + '</div>'; }).join('') + '</div><p class="lead">' + r.topicsLine + '</p></div>'
-  + '<div class="card"><span class="pill green">What worked</span>' + r.dayWorked.map(function(m) { return momentHtml(m, 'w'); }).join('') + '</div>'
-  + '<div class="card"><span class="pill purple">What could be better</span>' + r.dayBetter.map(function(m) { return momentHtml(m, 'b'); }).join('') + '</div>'
-  + '<div class="card"><span class="pill">Most useful change</span><div class="mctitle">' + r.mostTitle + '</div><p class="body">' + r.mostBody + '</p></div>'
-  + '<div class="card"><span class="pill">Compared to last week</span>' + trendHtml + '</div>'
-  + '<div class="card"><span class="pill">Topics covered today</span><div class="csub">Tap a topic to open it</div>' + topicsHtml + '</div>'
-  + '<div class="cream"><div class="ch">See your week</div><p>Your themes and trend, tuned to your role.</p><div class="btn" data-go="coaching">Open your week</div></div>'
-  + '<p class="footnote">Only you can see this recap. Coaching is off by default. Only your turns were used.</p></div>';
+  + '<div class="card"><span class="pill">Summary</span><div class="csub">Today’s topics</div>' + r.topics.map(function(t) { return '<div class="r">' + t + '</div>'; }).join('') + '</div>'
+  + '<div class="card"><span class="pill green">What worked</span>' + r.worked.map(function(p) { return patternHtml(p, 'w'); }).join('') + '</div>'
+  + '<div class="card"><span class="pill purple">What could be better</span>' + r.better.map(function(p) { return patternHtml(p, 'b'); }).join('') + '</div>'
+  + '<div class="card"><span class="pill">Compared to last week</span><div class="csub">Your patterns this week</div>'
+  + r.compare.map(function(c) { return '<div class="tr2"><span class="ar ' + (c.good ? 'good' : 'bad') + '">' + (c.good ? '&#8593;' : '&#8595;') + '</span><span><b>' + c.k + ':</b> ' + c.v + '</span></div>'; }).join('') + '</div>'
+  + '<div class="card"><span class="pill">Coming soon</span><div class="csub">Tap a topic to dive deeper</div>' + r.topics.map(function(t) { return '<div class="r dim">' + t + '</div>'; }).join('') + '</div>'
+  + '<div class="cream"><div class="ch">Recap your week</div><p>See your weekly communication recap, with the themes and trends in how you communicated.</p><div class="btn" data-go="weekly">See my weekly recap</div></div>'
+  + '<p class="footnote">Only you can see this recap. You can turn Coaching off in Settings.</p></div>';
 }
 
-function topicBody() {
-  var t = roles[role].topics[topicIdx];
-  var w = t.worked, d = t.better;
-  return '<div class="content">'
-  + '<div class="kicker">' + roles[role].label + ' · topic ' + (topicIdx + 1) + ' of 3</div><h2 class="ph" style="font-size:29px">' + t.title + '</h2><div style="height:8px"></div>'
-  + '<div class="card"><span class="pill">Overall read</span><p class="body">' + t.overall + '</p></div>'
-  + '<div class="card"><span class="pill green">What worked</span><div class="tg" style="color:var(--green);font-weight:800;font-size:12px;margin:-4px 0 9px">' + w.theme + '</div>' + momentHtml(w, 'w') + '</div>'
-  + '<div class="card"><span class="pill purple">What could be better</span><div class="tg" style="color:var(--purple);font-weight:800;font-size:12px;margin:-4px 0 9px">' + d.theme + '</div>' + momentHtml(d, 'b') + '</div>'
-  + '<div class="card"><span class="pill">Most useful change for this topic</span><div class="mctitle">' + t.most.title + '</div><p class="body">' + t.most.body + '</p></div>'
-  + '<p class="footnote">The suggested lines are in the Try something like boxes.</p></div>';
+function rowsHtml(list) {
+  return list.map(function(x) { return '<div class="wrow"><div class="wn">' + x.n + '</div><div class="ws">' + x.s + '</div><div class="ww">' + x.w + '</div></div>'; }).join('');
 }
 
-function coachingBody() {
+function weeklyBody() {
   var r = roles[role];
-  var heights = [56, 47, 41, 33, 26, 24];
-  var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  var vals = [9, 7, 6, 5, 4, 4];
-  var barsHtml = '';
-  for (var i = 0; i < 6; i++) { barsHtml += '<div><span style="height:' + heights[i] + 'px"></span>' + days[i] + '<br>' + vals[i] + '</div>'; }
-  var themesHtml = r.themes.map(function(th) { return '<div class="tr2" style="justify-content:space-between"><span style="font-weight:800;color:var(--ink)">' + th.n + '</span><span style="font-size:12.5px;color:var(--muted);text-align:right">' + th.s + '</span></div>'; }).join('');
   return '<div class="content">'
-  + '<div class="kicker">Coaching, this week</div><h2 class="ph">Your <em>week</em></h2><div style="height:8px"></div>'
+  + '<div class="kicker">Weekly recap</div><h2 class="ph">How you communicated <em>this week</em></h2><div class="date">Nov 2 to Nov 6</div>'
   + chip(r)
-  + '<div class="card"><span class="pill">Trend this week</span><p class="lead" style="margin-top:0">' + r.trendLabel + '.</p><div class="bars">' + barsHtml + '</div></div>'
-  + '<div class="card"><span class="pill">Themes this week</span><p class="lead" style="margin:0 0 4px">The patterns Flow noticed across your topics this week.</p>' + themesHtml + '</div>'
-  + '<p class="footnote">Coaching is off by default. Turn it on, or change what it looks at across dictation and meetings, in Settings. Only your turns are looked at, other speakers are not scored.</p></div>';
+  + '<div class="card"><span class="pill purple">Your role</span><div class="csub">' + r.themesTitle + '</div>' + rowsHtml(r.themes) + '</div>'
+  + '<div class="card"><span class="pill">Everyday</span><div class="csub">Everyday communication</div>' + rowsHtml(everyday) + '</div>'
+  + '<div class="cream"><span class="pill">Focus for next week</span><div class="ch">' + r.focus.t + '</div><p class="last">' + r.focus.tip + '</p></div>'
+  + '<p class="footnote">Only you can see this recap. You can turn Coaching off in Settings.</p></div>';
 }
 
 function render() {
   var screen = document.getElementById('screen');
+  var hint = document.getElementById('hint');
   document.getElementById('tabbar').innerHTML = tabsHtml();
   var bar, body;
-  if (view === 'setup') { bar = appbarMain(false); body = setupBody(); hintHtml('Pick a role, then tap <b>See my recap</b>. You can switch roles any time.'); }
-  else if (view === 'recap') { bar = appbarMain(true); body = recapBody(); hintHtml('Read the recap, then <b>tap a topic</b> near the bottom to drill in. Change your role from the chip, or open <b>Coaching</b>.'); }
-  else if (view === 'topic') { bar = appbarSub(); body = topicBody(); hintHtml('The suggested lines are in the <b>Try something like</b> boxes. Tap the X to close.'); }
-  else { bar = appbarSub(); body = coachingBody(); hintHtml('Your <b>trend and themes</b> for the week, tuned to your role. Tap the X to close.'); }
+  if (view === 'setup') { bar = appbarMain(false); body = setupBody(); hint.innerHTML = 'Pick a role, then tap <b>See my recap</b>. You can switch roles here.'; }
+  else if (view === 'recap') { bar = appbarMain(true); body = recapBody(); hint.innerHTML = 'Read the daily recap, then tap <b>See my weekly recap</b> at the bottom. You can switch roles by tapping <b>Change</b> at the top.'; }
+  else { bar = appbarSub(); body = weeklyBody(); hint.innerHTML = 'This is your weekly recap. Tap the <b>X</b> at the top to go back to your daily recap.'; }
   screen.innerHTML = statusbar() + bar + body;
   screen.scrollTop = (view === 'recap') ? recapScroll : 0;
 }
 
 document.getElementById('phone').addEventListener('click', function(e) {
   if (view === 'recap') recapScroll = document.getElementById('screen').scrollTop;
-  var selrole = e.target.closest('[data-selrole]');
-  if (selrole) { role = selrole.getAttribute('data-selrole'); render(); return; }
+  var sel = e.target.closest('[data-selrole]');
+  if (sel) { role = sel.getAttribute('data-selrole'); render(); return; }
   var go = e.target.closest('[data-go]');
-  if (go) { var dest = go.getAttribute('data-go'); if (dest === 'setup' || (dest === 'recap' && view !== 'topic')) recapScroll = 0; view = dest; render(); return; }
-  var topic = e.target.closest('[data-topic]');
-  if (topic) { topicIdx = parseInt(topic.getAttribute('data-topic'), 10); view = 'topic'; render(); return; }
-  var tab = e.target.closest('[data-tab]');
-  if (tab) { recapScroll = 0; view = 'recap'; render(); return; }
+  if (go) {
+    var dest = go.getAttribute('data-go');
+    if (dest === 'setup' || (dest === 'recap' && view === 'setup')) recapScroll = 0;
+    view = dest; render(); return;
+  }
+  if (e.target.closest('[data-tab]')) { recapScroll = 0; view = 'recap'; render(); }
 });
 render();
 </script>
